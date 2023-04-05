@@ -1,7 +1,10 @@
 package server;
 
 import javafx.util.Pair;
+import server.models.Course;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -91,9 +94,34 @@ public class Server {
      @param arg la session pour laquelle on veut récupérer la liste des cours
      */
     public void handleLoadCourses(String arg) {
-        // TODO: implémenter cette méthode
-    }
+        ArrayList<Course> listeDeCours = new ArrayList<>();
 
+        try {
+            FileReader fr = new FileReader("cours.txt");
+            BufferedReader reader = new BufferedReader(fr);
+
+            String ligne;
+            while ((ligne = reader.readLine()) != null) {
+                String[] colonnes = ligne.split("\t");
+                if (colonnes[2].equals(arg)) {
+                    String code_du_cours = colonnes[0];
+                    String nom_du_cours = colonnes[1];
+                    String session = colonnes[2];
+                    Course cours = new Course(nom_du_cours, code_du_cours, session);
+
+                    listeDeCours.add(cours);
+                }
+            }
+            reader.close();
+
+            objectOutputStream.writeObject(listeDeCours);
+
+        } catch (IOException ex) {
+            System.out.println("Erreur à l'ouverture du fichier");
+        }
+
+    }
+    
     /**
      Récupérer l'objet 'RegistrationForm' envoyé par le client en utilisant 'objectInputStream', l'enregistrer dans un fichier texte
      et renvoyer un message de confirmation au client.
