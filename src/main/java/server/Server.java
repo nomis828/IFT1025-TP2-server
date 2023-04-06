@@ -2,9 +2,12 @@ package server;
 
 import javafx.util.Pair;
 import server.models.Course;
+import server.models.RegistrationForm;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -97,7 +100,7 @@ public class Server {
         ArrayList<Course> listeDeCours = new ArrayList<>();
 
         try {
-            FileReader fr = new FileReader("cours.txt");
+            FileReader fr = new FileReader("./src/main/java/server/data/cours.txt");
             BufferedReader reader = new BufferedReader(fr);
 
             String ligne;
@@ -109,6 +112,7 @@ public class Server {
                     String session = colonnes[2];
                     Course cours = new Course(nom_du_cours, code_du_cours, session);
 
+                    System.out.println(cours.toString());
                     listeDeCours.add(cours);
                 }
             }
@@ -121,14 +125,29 @@ public class Server {
         }
 
     }
-    
+
     /**
      Récupérer l'objet 'RegistrationForm' envoyé par le client en utilisant 'objectInputStream', l'enregistrer dans un fichier texte
      et renvoyer un message de confirmation au client.
      La méthode gére les exceptions si une erreur se produit lors de la lecture de l'objet, l'écriture dans un fichier ou dans le flux de sortie.
      */
     public void handleRegistration() {
-        // TODO: implémenter cette méthode
+        try {
+            RegistrationForm inscription = (RegistrationForm) objectInputStream.readObject();
+
+            BufferedWriter writer = new BufferedWriter(new FileWriter("./src/main/java/server/data/inscription.txt", true));
+            writer.write(inscription.getCourse().getSession() + "\t");
+            writer.write(inscription.getCourse().getCode() + "\t");
+            writer.write(inscription.getMatricule() + "\t");
+            writer.write(inscription.getPrenom() + "\t");
+            writer.write(inscription.getNom() + "\t");
+            writer.write(inscription.getEmail() + "\n");
+
+            writer.close();
+
+        } catch (IOException | ClassNotFoundException ex) {
+            System.out.println("Erreur d'inscription");
+        }
     }
 }
 
