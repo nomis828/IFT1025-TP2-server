@@ -1,4 +1,4 @@
-package client;
+package clients.client_simple;
 
 public class ClientLauncher {
 

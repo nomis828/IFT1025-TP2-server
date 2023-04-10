@@ -112,7 +112,6 @@ public class Server {
                     String session = colonnes[2];
                     Course cours = new Course(nom_du_cours, code_du_cours, session);
 
-                    System.out.println(cours.toString());
                     listeDeCours.add(cours);
                 }
             }
