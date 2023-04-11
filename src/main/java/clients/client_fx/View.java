@@ -153,6 +153,17 @@ public class View extends Application {
         popup.setTitle("Inscription Reussite!");
         VBox root = new VBox();
 
+        // Reset l'affichage
+        prenom.setBorder(normalBorder);
+        nom.setBorder(normalBorder);
+        email.setBorder(normalBorder);
+        matricule.setBorder(normalBorder);
+        tableView.setBorder(normalBorder);
+        prenom.setText(null);
+        nom.setText(null);
+        email.setText(null);
+        matricule.setText(null);
+
         // Top de la fenetre
         HBox top = new HBox();
         Label topLabel = new Label("Message");
