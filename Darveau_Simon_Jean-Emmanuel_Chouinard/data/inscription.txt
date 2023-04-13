@@ -1,0 +1,2 @@
+Automne	IFT2255	12345678	Michalis	Famelis	mfamelis@iro.umontreal.ca
+Automne	IFT2255	12345678	Jean-Emmanuel	Chouinard	j-emmanuel@hotmail.ca

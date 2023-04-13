@@ -8,8 +8,6 @@ import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -21,19 +19,19 @@ import java.util.ArrayList;
 
 public class View extends Application {
     private final Controller controller = new Controller(new Model(), this);
-    private static final TableView<Course> tableView = new TableView<>();
-    private static final TextField prenom = new TextField();
-    private static final TextField nom = new TextField();
-    private static final TextField email = new TextField();
-    private static final TextField matricule = new TextField();
-    private static final Border errorBorder = new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID,
+    private final TableView<Course> tableView = new TableView<>();
+    private final TextField prenom = new TextField();
+    private final TextField nom = new TextField();
+    private final TextField email = new TextField();
+    private final TextField matricule = new TextField();
+    private final Border errorBorder = new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID,
             CornerRadii.EMPTY, BorderWidths.DEFAULT));
-    private static final Border normalBorder = new Border(new BorderStroke(Color.LIGHTGRAY, BorderStrokeStyle.SOLID,
+    private final Border normalBorder = new Border(new BorderStroke(Color.LIGHTGRAY, BorderStrokeStyle.SOLID,
             CornerRadii.EMPTY, BorderWidths.DEFAULT));
-    private final int width = 595;
+    private final int width = 600;
     private final int height = 500;
 
-    public static void run(String[] args) {
+    public static void main(String[] args) {
         View.launch(args);
     }
     @Override
@@ -171,9 +169,6 @@ public class View extends Application {
         topLabel.setPadding(new Insets(20,20,20,20));
         topLabel.setAlignment(Pos.CENTER);
 
-//        Image reussiIm = new Image("./src/main/java/clients/client_fx/erreur.png");
-//        ImageView reussi = new ImageView(reussiIm);
-
         top.getChildren().addAll(topLabel);
 
         Separator separator = new Separator();
@@ -243,10 +238,6 @@ public class View extends Application {
         topLabel.setPadding(new Insets(20,20,20,20));
         topLabel.setAlignment(Pos.CENTER);
         top.getChildren().addAll(topLabel);
-
-//        Image erreurIm = new Image("./src/main/java/clients/client_fx/erreur.png");
-//        ImageView erreurImage = new ImageView(erreurIm);
-//        root.getChildren().addAll(erreurImage);
 
         Separator separator = new Separator();
 

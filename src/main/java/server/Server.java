@@ -8,13 +8,7 @@ import javafx.util.Pair;
 import server.models.Course;
 import server.models.RegistrationForm;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -149,7 +143,7 @@ public class Server {
         ArrayList<Course> listeDeCours = new ArrayList<>();
 
         try {
-            FileReader fr = new FileReader("./src/main/java/server/data/cours.txt");
+            FileReader fr = new FileReader("data/cours.txt"); // ./src/main/java/server/
             BufferedReader reader = new BufferedReader(fr);
 
             String ligne;
@@ -171,7 +165,6 @@ public class Server {
         } catch (IOException ex) {
             System.out.println("Erreur à l'ouverture du fichier");
         }
-
     }
 
     /**
@@ -185,7 +178,7 @@ public class Server {
         try {
             RegistrationForm inscription = (RegistrationForm) objectInputStream.readObject();
 
-            BufferedWriter writer = new BufferedWriter(new FileWriter("./src/main/java/server/data/inscription.txt", true));
+            BufferedWriter writer = new BufferedWriter(new FileWriter("./data/inscription.txt", true)); // ./src/main/java/server
             writer.write(inscription.getCourse().getSession() + "\t");
             writer.write(inscription.getCourse().getCode() + "\t");
             writer.write(inscription.getMatricule() + "\t");
