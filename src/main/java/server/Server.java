@@ -38,9 +38,10 @@ public class Server {
     private final ArrayList<EventHandler> handlers;
 
     /**
-     * Instancie le serveur (constructor).
-     * @param port int le numéro du port auquel se connecter
-     * @throws IOException
+     Constructeur de la classe Server. Initialise un objet ServerSocket sur le port spécifié et
+     une liste d'handlers pour les événements en ajoutant la méthode handleEvents.
+     @param port le port sur lequel le serveur doit écouter (dans notre cas, 1337).
+     @throws IOException si une erreur d'entrée/sortie se produit lors de la création du socket.
      */
     public Server(int port) throws IOException {
         this.server = new ServerSocket(port, 1);
@@ -49,13 +50,18 @@ public class Server {
     }
 
     /**
-     * Permet d'ajouter un évènement à la liste d'EventHandler
-     * @param h - EventHandler à ajouter à la liste d'EventHandler
+     Permet d'ajouter un évènement à la liste d'EventHandler
+     @param h - EventHandler à ajouter à la liste d'EventHandler
      */
     public void addEventHandler(EventHandler h) {
         this.handlers.add(h);
     }
 
+    /**
+     La méthode alertHandlers notifie tous les EventHandler avec la commande et l'argument passés en paramètres.
+     @param cmd La commande à notifier.
+     @param arg L'argument à notifier.
+     */
     private void alertHandlers(String cmd, String arg) {
         for (EventHandler h : this.handlers) {
             h.handle(cmd, arg);
@@ -63,7 +69,9 @@ public class Server {
     }
 
     /**
-     * Démarre et fait fonctionner le server.
+     La méthode run lance le serveur et accepte les connexions des futurs clients.
+     Elle établit aussi une connexion du flux d'entrée/sortie avec le client, écoute ses commandes et se déconnecte
+     quand la communication est terminée.
      */
     public void run() {
         while (true) {
@@ -82,9 +90,10 @@ public class Server {
     }
 
     /**
-     * Permet au serveur d'écouter les requêtes du client
-     * @throws IOException
-     * @throws ClassNotFoundException
+     La méthode listen écoute en permanence les données entrantes à partir du flux d'entrée
+     et appelle la fonction alertHandlers dépendamment de la commande reçue et de l'argument reçu.
+     @throws IOException si une erreur se produit lors de la lecture de données à partir du flux d'entrée de l'objet.
+     @throws ClassNotFoundException si la classe d'un objet sérialisé reçu n'a pas été trouvée.
      */
     public void listen() throws IOException, ClassNotFoundException {
         String line;
@@ -97,9 +106,9 @@ public class Server {
     }
 
     /**
-     * Sépare la commande et l'argument envoyer au serveur.
-     * @param line String : la commande et l'argument
-     * @return objet Pair contenant la commande à exécuter (String) et les arguments de la commande (String)
+     La méthode processCommandLine sépare la commande et l'argument envoyé au serveur.
+     @param line La ligne de commande à traiter.
+     @return Une paire contenant la commande et les arguments.
      */
     public Pair<String, String> processCommandLine(String line) {
         String[] parts = line.split(" ");
@@ -109,8 +118,8 @@ public class Server {
     }
 
     /**
-     * Déconnecte le client du serveur et ferme les streams d'imput et d'output
-     * @throws IOException
+     La méthode disconnect déconnecte le client du serveur et ferme les streams d'input et d'output
+     @throws IOException si une erreur se produit lors de la fermeture des flux ou de la connexion.
      */
     public void disconnect() throws IOException {
         objectOutputStream.close();
@@ -119,9 +128,11 @@ public class Server {
     }
 
     /**
-     * Permet au serveur de gérer et d'exécuter les commandes qui lui sont envoyées par le client
-     * @param cmd le nom de la commande a exécuter
-     * @param arg utiliser par la commande "charger": la session pour laquelle on veut récupérer la liste des cours
+     La méthode handleEvents traite les événements en fonction de la commande et de l'argument fournis.
+     Si la commande est "INSCRIRE", on appelle la méthode handleRegistration().
+     Si la commande est "CHARGER", on appelle la méthode handleLoadCourses() avec l'argument fourni.
+     @param cmd le nom de la commande à exécuter
+     @param arg L'argument utilisé par la commande "CHARGER". C'est la session pour laquelle on veut récupérer la liste des cours
      */
     public void handleEvents(String cmd, String arg) {
         if (cmd.equals(REGISTER_COMMAND)) {

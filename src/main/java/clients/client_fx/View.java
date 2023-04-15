@@ -31,9 +31,19 @@ public class View extends Application {
     private final int width = 600;
     private final int height = 500;
 
+    /**
+     La méthode run est utilisée pour lancer l'application. Elle utilise start pour créer et afficher l'interface.
+     @param args les arguments de la ligne de commande
+     */
     public static void main(String[] args) {
         View.launch(args);
     }
+
+    /**
+     La méthode start démarre l'application JavaFX en créant et en affichant la fenêtre principale,
+     dans notre cas, le portail d'inscription de l'UdeM.
+     @param primaryStage la fenêtre principale de l'application
+     */
     @Override
     public void start(Stage primaryStage) {
         try {
@@ -141,10 +151,19 @@ public class View extends Application {
 
     }
 
+    /**
+     La méthode getTableView retourne la "tableView".
+     @return tableView
+     */
     public TableView getTableView() {
         return tableView;
     }
 
+    /**
+     La méthode popupInscriptionReussie affiche une fenêtre indiquant que l'inscription au cours a été réussie.
+     @param formulaire les informations du formulaire d'inscription
+     @param course le cours choisi
+     */
     public void popupInscriptionReussie(String[] formulaire, Course course) {
         Stage popup = new Stage();
         popup.setResizable(false);
@@ -175,7 +194,7 @@ public class View extends Application {
 
         // Bas de la fenetre
         Label bottomText = new Label("Félicitation! " + formulaire[0] + " " + formulaire[1] +
-                " est inscrit(e) avec succès au cours " + course.getCode());
+                " est inscrit(e) avec succès au cours " + course.getCode() + "!");
         bottomText.setFont(new Font("Arial", 15));
         bottomText.setWrapText(true);
         bottomText.setPadding(new Insets(10,10,10,10));
@@ -198,10 +217,16 @@ public class View extends Application {
         popup.show();
     }
 
+    /**
+     La méthode popupInscriptionErreur affiche une fenêtre indiquant que l'inscription au cours a échouée.
+     On indique dans cette fenête la ou les raisons de l'échec d'inscription en montrant les formats acceptés
+     pour le mail et le matricule.
+     @param erreurs une liste des messages d'erreur à afficher.
+     */
     public void popupInscriptionErreur(ArrayList<String> erreurs) {
         Stage popup = new Stage();
         popup.setResizable(false);
-        popup.setTitle("Erreur d'inscription...");
+        popup.setTitle("Erreur d'inscription");
         VBox root = new VBox();
 
         // Reset l'affichage
@@ -219,10 +244,10 @@ public class View extends Application {
                 case "Veillez écrire votre nom":
                     nom.setBorder(errorBorder);
                     break;
-                case "Votre courriel est invalide (format prenom.nom@umontreal.ca)":
+                case "Votre courriel est invalide (format accepté: prenom.nom@umontreal.ca)":
                     email.setBorder(errorBorder);
                     break;
-                case "Votre matricule est invalide (format 12345678)":
+                case "Votre matricule est invalide (format accepté: 12345678)":
                     matricule.setBorder(errorBorder);
                     break;
                 case "Veillez sélectionner un cours":
