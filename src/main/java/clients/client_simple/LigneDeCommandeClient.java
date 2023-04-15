@@ -46,9 +46,9 @@ public class LigneDeCommandeClient {
     /**
      La méthode afficherMenuSecondaire affiche le menu secondaire permettant de consulter les cours pour une autre session,
      de s'inscrire à un cours ou de quitter l'application.
-     Si l'utilisateur entre 1, le menu principal est affiché à nouveau en appelant la méthode afficherMenuPrincipal().
-     Si l'utilisateur entre 2, la méthode Inscription() est appelée pour gérer l'inscription à un cours.
-     Si l'utilisateur entre 3, le client quitte le portail d'inscription.
+     <p>Si l'utilisateur entre 1, le menu principal est affiché à nouveau en appelant la méthode afficherMenuPrincipal(). </p>
+     <p>Si l'utilisateur entre 2, la méthode Inscription() est appelée pour gérer l'inscription à un cours. </p>
+     <p>Si l'utilisateur entre 3, le client quitte le portail d'inscription.</p>
      Un message d'erreur est affiché et le menu est affiché à nouveau tant et aussi longtemps que le client n'a pas
      fait de choix valide.
      */
@@ -172,11 +172,11 @@ public class LigneDeCommandeClient {
 
     /**
      La méthode inscription permet à un utilisateur de s'inscrire à un cours en se connectant au serveur.
-     On demande le prénom, le nom, l'email, la matricule ainsi que le code du cours.
-     On vérifie le code du cours en appelant la méthode "validerEmail".
-     On vérifie le code du cours en appelant la méthode "validerMatricule".
-     On vérifie le code du cours en appelant la méthode "validerCours".
-     Si le code de cours est valide, on inscrit l'utilisateur au cours choisi en modifiant le fichier inscription.txt
+     <p>On demande le prénom, le nom, l'email, la matricule ainsi que le code du cours.</p>
+     <p>On vérifie le code du cours en appelant la méthode "validerEmail".</p>
+     <p>On vérifie le code du cours en appelant la méthode "validerMatricule".</p>
+     <p>On vérifie le code du cours en appelant la méthode "validerCours".</p>
+     <p>Si le code de cours est valide, on inscrit l'utilisateur au cours choisi en modifiant le fichier inscription.txt</p>
      Si le code de cours n'est pas valide, un message d'erreur est affiché.
      */
     private void Inscription() {
