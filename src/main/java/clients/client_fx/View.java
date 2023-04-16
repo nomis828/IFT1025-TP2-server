@@ -238,10 +238,10 @@ public class View extends Application {
 
         for (String erreur : erreurs) {
             switch (erreur) {
-                case "Veillez écrire votre prénom":
+                case "Veuillez écrire votre prénom":
                     prenom.setBorder(errorBorder);
                     break;
-                case "Veillez écrire votre nom":
+                case "Veuillez écrire votre nom":
                     nom.setBorder(errorBorder);
                     break;
                 case "Votre courriel est invalide (format accepté: prenom.nom@umontreal.ca)":
@@ -250,7 +250,7 @@ public class View extends Application {
                 case "Votre matricule est invalide (format accepté: 12345678)":
                     matricule.setBorder(errorBorder);
                     break;
-                case "Veillez sélectionner un cours":
+                case "Veuillez sélectionner un cours":
                     tableView.setBorder(errorBorder);
                     break;
             }

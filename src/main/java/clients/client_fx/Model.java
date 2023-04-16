@@ -50,10 +50,10 @@ public class Model {
    public ArrayList<String> inscription(String[] formulaire, Course course) {
         // Checker si le formulaire a des erreurs
         if (formulaire[0].isEmpty()) {
-            erreursMessage.add("Veillez écrire votre prénom");
+            erreursMessage.add("Veuillez écrire votre prénom");
         }
         if (formulaire[1].isEmpty()) {
-            erreursMessage.add("Veillez écrire votre nom");
+            erreursMessage.add("Veuillez écrire votre nom");
         }
         if (formulaire[2].isEmpty() | !formulaire[2].matches("[-A-Za-z0-9!#$%&'*+/=?^_`{|}~]+(?:\\.[-A-Za-z0-9!#$%&'*+/=?^_`{|}~]+)*@(?:[A-Za-z0-9](?:[-A-Za-z0-9]*[A-Za-z0-9])?\\.)+[A-Za-z0-9](?:[-A-Za-z0-9]*[A-Za-z0-9])?")) {
             erreursMessage.add("Votre courriel est invalide (format accepté: prenom.nom@umontreal.ca)");
@@ -62,7 +62,7 @@ public class Model {
             erreursMessage.add("Votre matricule est invalide (format accepté: 12345678)");
         }
         if (course == null) {
-            erreursMessage.add("Veillez sélectionner un cours");
+            erreursMessage.add("Veuillez sélectionner un cours");
         }
 
         // Envoyer le formulaire s'il n'y a pas d'erreurs
