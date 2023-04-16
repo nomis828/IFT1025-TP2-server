@@ -20,7 +20,7 @@ buildNumber.properties
 .idea/
 *.iml
 *.iws
-out/artifacts
+out/*
  
 # Mac
 .DS_Store
