@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"clients.client_simple","l":"ClientLauncher"},{"p":"clients.client_fx","l":"Controller"},{"p":"clients.client_fx","l":"FXLauncher"},{"p":"clients.client_simple","l":"LigneDeCommandeClient"},{"p":"clients.client_fx","l":"Model"},{"p":"clients.client_fx","l":"View"}];updateSearchResults();

@@ -1,0 +1,2 @@
+Automne	IFT2255	12345678	Simon	Darveau	simon.darveau@umontreal.ca
+Hiver	IFT1025	12345678	Jean-Emmanuel	Chouinard	jean-emmanuel@gmail.com

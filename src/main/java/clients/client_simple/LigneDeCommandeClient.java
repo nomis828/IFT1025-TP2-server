@@ -12,7 +12,13 @@ import java.util.ArrayList;
 
 public class LigneDeCommandeClient {
 
+    /**
+     Scanner
+     */
     Scanner scanner = new Scanner(System.in);
+    /**
+     Liste de cours
+     */
     ArrayList<Course> listeDeCours = new ArrayList<>();
 
     /**
