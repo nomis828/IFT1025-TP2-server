@@ -1,5 +1,6 @@
 /**
- * Auteurs: Oussama Ben Sghaier et Simon Darveau
+ * Auteurs: Oussama Ben Sghaier
+ * Équipe: Simon Darveau (20246880) et Jean-Emmanuel Chouinard (20246807)
  */
 
 package server;
@@ -148,7 +149,6 @@ public class Server {
      Ensuite, elle renvoie la liste des cours pour une session au client en utilisant l'objet 'objectOutputStream'.
      La méthode gère les exceptions si une erreur se produit lors de la lecture du fichier ou de l'écriture de l'objet dans le flux.
      @param arg la session pour laquelle on veut récupérer la liste des cours
-     @throws IOException
      */
     public void handleLoadCourses(String arg) {
         ArrayList<Course> listeDeCours = new ArrayList<>();
@@ -165,7 +165,6 @@ public class Server {
                     String nom_du_cours = colonnes[1];
                     String session = colonnes[2];
                     Course cours = new Course(nom_du_cours, code_du_cours, session);
-
                     listeDeCours.add(cours);
                 }
             }
@@ -182,8 +181,6 @@ public class Server {
      Récupérer l'objet 'RegistrationForm' envoyé par le client en utilisant 'objectInputStream', l'enregistrer dans un fichier texte
      et renvoyer un message de confirmation au client.
      La méthode gére les exceptions si une erreur se produit lors de la lecture de l'objet, l'écriture dans un fichier ou dans le flux de sortie.
-     @throws IOException
-     @throws ClassNotFoundException
      */
     public void handleRegistration() {
         try {
