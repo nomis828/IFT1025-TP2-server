@@ -18,17 +18,47 @@ import java.util.ArrayList;
 
 
 public class View extends Application {
+    /**
+     Crée le controlleur qui fait le lien entre la vue et le modèle
+     */
     private final Controller controller = new Controller(new Model(), this);
+    /**
+     Tableau qui affichera la liste de cours pour une session donnée
+     */
     private final TableView<Course> tableView = new TableView<>();
+    /**
+     Champ de texte du formulaire qui demande le prenom de l'étudiant
+     */
     private final TextField prenom = new TextField();
+    /**
+     Champ de texte du formulaire qui demande le nom de l'étudiant
+     */
     private final TextField nom = new TextField();
+    /**
+     Champ de texte du formulaire qui demande le courriel de l'étudiant
+     */
     private final TextField email = new TextField();
+    /**
+     Champ de texte du formulaire qui demande le matricule de l'étudiant
+     */
     private final TextField matricule = new TextField();
+    /**
+     Bordure des champs de texte et du tableau lors d'une erreur
+     */
     private final Border errorBorder = new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID,
             CornerRadii.EMPTY, BorderWidths.DEFAULT));
+    /**
+     Bordure des champs de texte et du tableau lorsqu'il n'y a pas d'erreur
+     */
     private final Border normalBorder = new Border(new BorderStroke(Color.LIGHTGRAY, BorderStrokeStyle.SOLID,
             CornerRadii.EMPTY, BorderWidths.DEFAULT));
+    /**
+     Largeur de l'écran
+     */
     private final int width = 600;
+    /**
+     Hauteur de l'écran
+     */
     private final int height = 500;
 
     /**

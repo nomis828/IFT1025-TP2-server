@@ -7,7 +7,13 @@ import server.models.Course;
 import java.util.ArrayList;
 
 public class Controller {
+    /**
+     Modèle que le controlleur utilise
+     */
     private Model model;
+    /**
+     Vue que le controlleur modifie
+     */
     private View view;
 
     /**

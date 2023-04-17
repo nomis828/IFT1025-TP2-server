@@ -10,7 +10,13 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 public class Model {
+    /**
+     Liste de cours qui est envoyée au controlleur
+     */
     private ArrayList<Course> listeDeCours = new ArrayList<>();
+    /**
+     Liste de message d'erreur qui sera envoyé au controlleur
+     */
     private  ArrayList<String> erreursMessage = new ArrayList<>();
 
     /**
